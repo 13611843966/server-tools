@@ -2,17 +2,17 @@
 # © 2016 Serpent Consulting Services Pvt. Ltd. (support@serpentcs.com)
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
-from openerp.exceptions import UserError
-from openerp import api, fields, models, _
+from odoo.exceptions import UserError
+from odoo import api, fields, models, _
 
 
 class MassObject(models.Model):
     _name = "mass.object"
     _description = "Mass Editing Object"
 
-    name = fields.Char('Name', required=True, select=1)
+    name = fields.Char('Name', required=True, index=1)
     model_id = fields.Many2one('ir.model', 'Model', required=True,
-                               help="Model is used for Selecting Fields. "
+                               help="Model is used for Select   ing Fields. "
                                     "This is editable until Sidebar menu "
                                     "is not created.")
     field_ids = fields.Many2many('ir.model.fields', 'mass_field_rel',
